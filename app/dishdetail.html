@@ -42,10 +42,10 @@
                                     <span class="badge">{{dish.price | currency}}</span>
                                 </h2>
                                 <p>{{dish.description}}</p>
-                                Comment Order by: <input type="text" id="orderByWhat" ng-keyup="dishDetailCtrl.orderBySubmitted($event)" placeholder="author/rating/date">
-                                <blockquote ng-repeat="comment in dish.comment | orderBy: dishDetailCtrl.orderby">
+                                Comment Order by: <input type="text" ng-model="dishDetailCtrl.dishes.commentOrderBy" placeholder="date/rating/author">
+                                <blockquote ng-repeat="comment in dish.comment | orderBy: dishDetailCtrl.dishes.commentOrderBy">
                                     <p>{{comment.comment}}</p>
-                                    <footer>{{comment.author}}, {{ comment.date | date:'yyyy-MM-dd HH:mm:ss'}}</footer>
+                                    <footer>{{comment.rating}} stars, {{comment.author}}, {{ comment.date | date:'yyyy-MM-dd HH:mm:ss'}}</footer>
                                 </blockquote>
                             </div>
                         </li>
@@ -71,15 +71,15 @@
                     comment: [
                         {
                             author: 'yiqian xia',
-                            date: '1288323623006',
+                            date: '1399923623006',
                             rating: 10,
-                            comment: 'this tastes good.'
+                            comment: 'It tastes good.'
                         },
                         {
                             author: 'Linda Tian',
-                            date: '1288323623006',
+                            date: '1399323623006',
                             rating: 4,
-                            comment: 'just so-so...'
+                            comment: 'Just so-so...'
                         },
                         {
                             author: 'ning liu',
@@ -93,29 +93,11 @@
                             rating: 9,
                             comment: 'A unique combination of Indian Uthappam (pancake) and Italian pizza'
                         }
-                    ]
+                    ],
+                    commentOrderBy: 'date'
                 }
             ];
             this.dishes = dishes;
-
-            this.orderBySubmitted = function(event) {
-//                alert("haha");
-                if (event.keyCode === 13) {
-                    var orderby = document.getElementById('orderByWhat').value;
-
-                    if (orderby ===  'date') {
-                        this.orderby = 'date';
-                    }
-                    else if (orderby === 'author') {
-                        this.orderby = 'author';
-                    }
-                    else if (orderby === 'rating') {
-                        this.orderby = 'rating';
-                    }
-                }
-
-            }
-
         });
     </script>
 </body>
