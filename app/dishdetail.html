@@ -56,7 +56,7 @@
                     <li ng-repeat="comment in dish.comments | orderBy: dish.commentOrder">
                         <blockquote>
                             <p>{{comment.comment}}</p>
-                            <footer>{{comment.rating}} star(s) given by {{comment.author}} at {{comment.date | date:'medium'}}
+                            <footer>{{comment.rating}} stars, {{comment.author}}, {{comment.date | date:'medium'}}
                             </footer>
                         </blockquote>
                     </li>

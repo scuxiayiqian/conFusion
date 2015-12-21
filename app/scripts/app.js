@@ -73,36 +73,6 @@ angular.module('confusionApp', [])
         };
     }])
 
-    //.controller('ContactController', ['$scope', function($scope) {
-    //
-    //    $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-    //
-    //    $scope.channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
-    //
-    //    $scope.invalidChannelSelection = false;
-    //
-    //}])
-    //
-    //.controller('FeedbackController', ['$scope', function($scope) {
-    //
-    //    $scope.sendFeedback = function() {
-    //
-    //        console.log($scope.feedback);
-    //
-    //        if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
-    //            $scope.invalidChannelSelection = true;
-    //            console.log('incorrect');
-    //        }
-    //        else {
-    //            $scope.invalidChannelSelection = false;
-    //            $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-    //            $scope.feedback.mychannel="";
-    //            $scope.feedbackForm.$setPristine();
-    //            console.log($scope.feedback);
-    //        }
-    //    };
-    //}])
-
     .controller('ContactController', ['$scope', function($scope) {
         $scope.feedback = {
             mychannel:"",
@@ -139,7 +109,6 @@ angular.module('confusionApp', [])
             }
         };
     }])
-
 
     .controller('DishDetailController', ['$scope', function($scope) {
 
@@ -189,58 +158,21 @@ angular.module('confusionApp', [])
         $scope.dish = dish;
     }])
 
-    //.controller('DishCommentController', ['$scope', function($scope) {
-    //
-    //    //Step 1: Create a JavaScript object to hold the comment from the form
-    //
-    //    $scope.submitComment = function () {
-    //
-    //        //Step 2: This is how you record the date
-    //        "The date property of your JavaScript object holding the comment" = new Date().toISOString();
-    //
-    //        // Step 3: Push your comment into the dish's comment array
-    //        $scope.dish.comments.push("Your JavaScript Object holding the comment");
-    //
-    //        //Step 4: reset your form to pristine
-    //
-    //        //Step 5: reset your JavaScript object that holds your comment
-    //    }
-    //}])
-
     .controller('DishCommentController', ['$scope', function($scope) {
 
+        //Step 1: Create a JavaScript object to hold the comment from the form
         $scope.comment = {
-            rating:'5',
-            comment:'',
-            author:'',
-            date:''
+            rating: '5',
+            comment: '',
+            author: '',
+            date: ''
         };
 
-        $scope.submitComment = function () {
+        $scope.submitComment = function() {
             $scope.comment.date = new Date().toISOString();
-            console.log($scope.comment);
             $scope.dish.comments.push($scope.comment);
             $scope.commentForm.$setPristine();
             $scope.comment = {rating:'5',comment:'',author:'',date:''};
         };
 
-        $scope.sendFeedback = function() {
-
-            console.log($scope.feedback);
-
-            if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
-                $scope.invalidChannelSelection = true;
-                console.log('incorrect');
-            }
-            else {
-                $scope.invalidChannelSelection = false;
-                $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-                $scope.feedback.mychannel="";
-                $scope.feedbackForm.$setPristine();
-                console.log($scope.feedback);
-            }
-        };
-
-    }])
-
-;
+    }]);
