@@ -57,12 +57,14 @@
         </div>
     </div>
 
-
     <div class="row row-content">
         <div class="col-xs-12 col-sm-9">
             <h2>Corporate Leadership</h2>
             <ul class="media-list fade in active">
-                <li class="media" ng-repeat="leader in leaders">
+                <li ng-if="!showLeaders">
+                    <h3>{{leadersMessage}}</h3>
+                </li>
+                <li class="media" ng-repeat="leader in leaders" ng-if="showLeaders">
                     <div class="media-left media-middle">
                         <img class="media-object img-thumbnail"
                              ng-src={{leader.image}} alt="{{leader.name}}">
